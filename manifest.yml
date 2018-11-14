@@ -1,0 +1,6 @@
+applications:
+- name: pkyc-profile-viewer
+command: node server.js
+buildpack: mdse_nodejs_v1-5-30
+services:
+- pkyc-eureka-dev
