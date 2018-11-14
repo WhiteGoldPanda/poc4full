@@ -1,0 +1,105 @@
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+
+const htmlWebpack = new HtmlWebPackPlugin({
+template: "./src/index.html",
+filename: "index.html"
+});
+
+module.exports = {
+entry: ['whatwg-fetch', 'babel-polyfill', './src/index.jsx'],
+output: {
+filename: "out.js",
+path: path.resolve(__dirname, "../public"),
+},
+devServer: {
+historyApiFallback: true,
+// hot: true,
+publicPath: '/'
+},
+watch: true,
+mode: "development",
+module: {
+rules: [
+{
+test: /\.(js|jsx)$/,
+exclude: /node_modules/,
+use: {
+loader: 'babel-loader',
+options: {
+presets: ["es2015", "stage-2" , "react"]
+}
+}
+},
+{
+test: /\.css$/,
+use: ['style-loader', 'css-loader']
+},
+{
+test: /\.scss$/,
+use: [
+'style-loader',
+'css-loader',
+{
+loader: 'postcss-loader',
+options: {
+plugins: () => [
+new require('autoprefixer')({
+browsers: [
+'ie 11'
+]
+})
+]
+}
+},
+'sass-loader'
+]
+},
+{
+test: /\.sass$/,
+use: [
+'style-loader','css-loader', 'sass-loader',
+{
+loader: 'postcss-loader',
+options: {
+plugins: () => [
+new require('autoprefixer')({
+browsers: [
+'ie 11'
+]
+})
+]
+}
+},
+'sass-loader'
+]
+},
+{
+test: /\.(jpg|jpeg|gif|png|csv)$/,
+use: {
+loader: 'file-loader',
+options: {
+name: '[name].[ext]',
+publicPath: 'images',
+outputPath: 'images'
+}
+}
+},
+{
+test: /\.(eot|ttf|woff|woff2)$/,
+use: {
+loader: 'file-loader',
+options: {
+name: '[name].[ext]',
+publicPath: 'fonts',
+outputPath: 'fonts'
+}
+}
+}
+]
+},
+resolve: {
+extensions: ['.js', '.jsx'],
+},
+plugins: [htmlWebpack]
+};
