@@ -11,7 +11,7 @@ router.get('/:name', function (req, res, next) {
 
 // Direct url to PKYC-MONGO-API
 var url =
-'pkyc-mongo-api-fcropsit01-space03.apps.cf.skm-drn-01.cloud.hk.hsbc'
+'pkyc-mongo-api-fcropsit01-space03.apps.cf.skm-drn-01.cloud.hk'
 
 var options = {
 method: 'GET',
