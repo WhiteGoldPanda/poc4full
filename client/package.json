@@ -7,11 +7,7 @@
 "start": "webpack-dev-server --inline --hot --open",
 "build": "webpack --mode production"
 },
-"repository": {
-"type": "git",
-"url": " https://alm-github.systems.uk.hsbc/44139486/test_webpack_react.git
-"
-},
+
 "keywords": [],
 "author": "",
 "license": "ISC",
