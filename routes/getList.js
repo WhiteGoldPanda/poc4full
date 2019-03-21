@@ -10,8 +10,7 @@ router.get('/:name', function (req, res, next) {
 // var url = instances[0].hostName
 
 // Direct url to PKYC-MONGO-API
-var url =
-'pkyc-mongo-api-fcropsit01-space03.apps.cf.skm-drn-01.cloud.hk'
+var url = ""
 
 var options = {
 method: 'GET',
